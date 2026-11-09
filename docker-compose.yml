@@ -1,0 +1,23 @@
+services:
+  spark:
+    image: quay.io/jupyter/pyspark-notebook:spark-4.0.0
+    container_name: spark-jupyter
+
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+      - "4041:4041"
+
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=bigdata
+
+    volumes:
+      - ./work:/home/lkarim/work
+
+    networks:
+      - bigdata
+
+networks:
+  bigdata:
+    name: bigdata
